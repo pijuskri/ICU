@@ -6,10 +6,11 @@ using UnityEngine;
 public class FirstPerson : MonoBehaviour
 {
     public Camera camera;
+    private Rigidbody rgb;
     // Start is called before the first frame update
     void Start()
     {
-    
+        rgb = GetComponent<Rigidbody>();
     }
     float speed = 5f;
     // Update is called once per frame
@@ -18,12 +19,13 @@ public class FirstPerson : MonoBehaviour
         int xmove = Convert.ToInt32(Input.GetKey(KeyCode.LeftArrow)) - Convert.ToInt32(Input.GetKey(KeyCode.RightArrow));
         int ymove = Convert.ToInt32(Input.GetKey(KeyCode.UpArrow)) - Convert.ToInt32(Input.GetKey(KeyCode.DownArrow));
         transform.position += ((-transform.right * xmove) + (transform.forward * ymove)) * Time.deltaTime * speed;
+        rgb.velocity = new Vector3(0,rgb.velocity.y,0);
         Look();
     }
 
     public float lookSpeed = 3;
     private Vector2 rotation = Vector2.zero;
-    public void Look() // Look rotation (UP down is Camera) (Left right is Transform rotation)
+    public void Look()
     {
         rotation.y += Input.GetAxis("Mouse X");
         rotation.x += -Input.GetAxis("Mouse Y");
