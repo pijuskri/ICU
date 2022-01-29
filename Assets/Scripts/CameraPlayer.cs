@@ -15,16 +15,16 @@ public class CameraPlayer : MonoBehaviour
         RenderPipelineManager.endCameraRendering += EndCameraRendering;
     }
 
-    float speed = 5f;
-    float zoomSpeed = 0.5f;
+    float speed = 2f;
+    float zoomSpeed = 0.0015f;
     void Update()
     {
         int xmove = Convert.ToInt32(Input.GetKey(KeyCode.A)) - Convert.ToInt32(Input.GetKey(KeyCode.D));
         int ymove = Convert.ToInt32(Input.GetKey(KeyCode.W)) - Convert.ToInt32(Input.GetKey(KeyCode.S));
         int zoom = Convert.ToInt32(Input.GetKey(KeyCode.Q)) - Convert.ToInt32(Input.GetKey(KeyCode.E));
-        transform.position += ((Vector3.left * xmove) + (Vector3.forward * ymove)) * Time.deltaTime * ZoomSpeed() * 0.75f;
+        transform.position += ((Vector3.left * xmove) + (Vector3.forward * ymove)) * Time.deltaTime * ZoomSpeed() * speed;
         //transform.position += Vector3.up * zoom * Time.deltaTime * ZoomSpeed() * 0.75f;
-        camera.orthographicSize = Mathf.Clamp( camera.orthographicSize + (zoom* ZoomSpeed() * 0.005f), 3, 50);
+        camera.orthographicSize = Mathf.Clamp( camera.orthographicSize + (zoom* ZoomSpeed() * zoomSpeed), 3, 50);
     }
     float ZoomSpeed()
     {

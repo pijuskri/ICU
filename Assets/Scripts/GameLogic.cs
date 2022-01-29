@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using System.Linq;
+
 
 public class GameLogic : MonoBehaviour
 {
@@ -18,13 +20,15 @@ public class GameLogic : MonoBehaviour
     public GameObject endGoodScreen;
     public GameObject warningCross;
     public Tilemap tilemap;
+    public AmmoBoxPickup[] ammoBoxes;
     //55, -23, 87, 8
     public Vector4 playableArea = new Vector4(-20, 50, 12, 83);
-    public float chanceToSpawnExplosion = 0.05f;
+    public float chanceToSpawnExplosion = 0.075f;
     public float fadeSpeed = 0.75f;
     public bool gameOutcome = false;
-    public int paperCollected = 0;
-    public int totalPapers = 5;
+    public int ammoCollected = 0;
+    public int totalAmmo = 5;
+    float shellHeight = 50;
     void Awake()
     {
         if (instance != null && instance != this)
@@ -40,6 +44,7 @@ public class GameLogic : MonoBehaviour
     void Start()
     {
         //randomSpawn();
+        NextGuide();
     }
 
     float secondTimer = 0;
@@ -48,7 +53,7 @@ public class GameLogic : MonoBehaviour
         secondTimer += Time.deltaTime;
         if (secondTimer > 1) {
             secondTimer = 1f - secondTimer;
-            spawnExplosion();for (int i = 0; i < 10; i++) ;
+            spawnExplosion();
         }
         
     }
@@ -56,9 +61,9 @@ public class GameLogic : MonoBehaviour
     void spawnExplosion() {
         if (Random.Range(0f, 1) < chanceToSpawnExplosion) {
             Vector2 rand = Random.insideUnitCircle;
-            Vector3 loc = RandomPointInArea(2);
+            Vector3 loc = RandomPointInArea(shellHeight);
             Instantiate(explodeAnime, loc, Quaternion.identity);
-            GameObject warning = Instantiate(warningCross, new Vector3(loc.x, 4, loc.z), Quaternion.identity);
+            GameObject warning = Instantiate(warningCross, new Vector3(loc.x, 6, loc.z), Quaternion.Euler(Vector3.right*90));
             Destroy(warning, 10f);
         }
     }
@@ -87,13 +92,22 @@ public class GameLogic : MonoBehaviour
         player.transform.position = new Vector3(loc.x, player.transform.position.y + 1, loc.z);
     }
 
+    public void PickAmmo() {
+        ammoCollected++;
+        ammoBoxes = ammoBoxes.Where(x => x != null).ToArray();
+        NextGuide();
+    }
+    void NextGuide() {
+        if (ammoBoxes.Length > 0) ammoBoxes[0].showGuide();
+    }
+
     public void EndGame(bool outcome) {
         gameOutcome = outcome;
         if (outcome) {
-            if (paperCollected >= totalPapers) EndGame(true);
+            if (ammoCollected >= totalAmmo) StartCoroutine(FadeImage(false, EndGameScreen));
         }
-        else Debug.Log("damm you died");
-        StartCoroutine(FadeImage(false, EndGameScreen));
+        else StartCoroutine(FadeImage(false, EndGameScreen));
+
     }
 
     IEnumerator FadeImage(bool fadeAway, Action doAfter)
@@ -126,7 +140,7 @@ public class GameLogic : MonoBehaviour
         endGoodScreen.SetActive(false);
         endBadScreen.SetActive(false);
         Time.timeScale = 1;
-        SceneManager.LoadScene("test");
+        SceneManager.LoadScene("Level");
     }
 
    

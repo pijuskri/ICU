@@ -5,9 +5,10 @@ using UnityEngine;
 public class AmmoBoxPickup : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameObject guide;
     void Start()
     {
-        
+        guide.SetActive(false);
     }
 
     // Update is called once per frame
@@ -15,11 +16,14 @@ public class AmmoBoxPickup : MonoBehaviour
     {
         
     }
+    public void showGuide() {
+        guide.SetActive(true);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == GameLogic.instance.player)
         {
-            GameLogic.instance.paperCollected ++;
+            GameLogic.instance.PickAmmo();
             Destroy(gameObject);
         }
     }
