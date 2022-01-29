@@ -26,11 +26,6 @@ public class CameraPlayer : MonoBehaviour
         //transform.position += Vector3.up * zoom * Time.deltaTime * ZoomSpeed() * 0.75f;
         camera.orthographicSize = Mathf.Clamp( camera.orthographicSize + (zoom* ZoomSpeed() * 0.005f), 3, 50);
     }
-    /*
-    float ZoomSpeed() {
-        return Mathf.Clamp(transform.position.y, 3, 25);
-    }
-    */
     float ZoomSpeed()
     {
         return Mathf.Clamp(camera.orthographicSize, 5, 30);
