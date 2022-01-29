@@ -33,4 +33,6 @@ public class FirstPerson : MonoBehaviour
         transform.eulerAngles = new Vector2(0, rotation.y) * lookSpeed;
         camera.transform.localRotation = Quaternion.Euler(rotation.x * lookSpeed, 0, 0);
     }
+
+   
 }

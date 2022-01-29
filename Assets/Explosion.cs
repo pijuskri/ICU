@@ -13,7 +13,7 @@ public class Explosion : MonoBehaviour
         player = GameLogic.instance.player;
         Destroy(gameObject, timeToDestroy);
         if (Vector3.Distance(player.transform.position, transform.position) < killRange) {
-            GameLogic.instance.EndGame();
+            GameLogic.instance.EndGame(false);
         }
     }
 
