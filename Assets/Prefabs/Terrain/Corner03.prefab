@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8889746421397055718}
   - component: {fileID: 6188608524569696090}
   - component: {fileID: 4774947650761379133}
+  - component: {fileID: -2374118757901959286}
   m_Layer: 0
   m_Name: Corner03
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-2374118757901959286
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3689642545800015010}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4110545604807663242, guid: eea5970a908887f46b2c6be2ae6c470e, type: 3}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6206096945606760024}
   - component: {fileID: 2835190836530548177}
   - component: {fileID: 5371351301258404160}
+  - component: {fileID: -8018043042465915305}
   m_Layer: 0
   m_Name: Xtile04
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-8018043042465915305
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3617911209926844111}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8174554023332331646, guid: eea5970a908887f46b2c6be2ae6c470e, type: 3}
