@@ -8,6 +8,6 @@ public class Shell : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Instantiate(explosion, collision.GetContact(0).point, Quaternion.identity);
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 }
