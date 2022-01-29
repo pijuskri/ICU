@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 public class CameraPlayer : MonoBehaviour
 {
     // Start is called before the first frame update
-    Camera camera;
+    new Camera camera;
     void Start()
     {
         camera = GetComponent<Camera>();
