@@ -50,7 +50,7 @@ public class GameLogic : MonoBehaviour
             secondTimer = 1f - secondTimer;
             spawnExplosion();for (int i = 0; i < 10; i++) ;
         }
-        if (paperCollected >= totalPapers) EndGame(true);
+        
     }
 
     void spawnExplosion() {
@@ -89,7 +89,9 @@ public class GameLogic : MonoBehaviour
 
     public void EndGame(bool outcome) {
         gameOutcome = outcome;
-        if(outcome) Debug.Log("damm you won");
+        if (outcome) {
+            if (paperCollected >= totalPapers) EndGame(true);
+        }
         else Debug.Log("damm you died");
         StartCoroutine(FadeImage(false, EndGameScreen));
     }
