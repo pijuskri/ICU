@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 7399935572176608254}
   - component: {fileID: 5845111183183582299}
   - component: {fileID: 8573436346612506769}
+  - component: {fileID: 1959092160005257146}
+  - component: {fileID: 4392535305816892709}
+  - component: {fileID: 1935777218228989881}
   m_Layer: 0
   m_Name: sandbags
   m_TagString: Untagged
@@ -81,3 +84,42 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1959092160005257146
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7924658171773010244}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.1257524, y: 0.41110975, z: 0.29992777}
+  m_Center: {x: 0.22407907, y: 0.020231634, z: 0.055465356}
+--- !u!65 &4392535305816892709
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7924658171773010244}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5427209, y: 1.1178579, z: 0.29992777}
+  m_Center: {x: -1.3966534, y: -0.33314246, z: 0.055465356}
+--- !u!65 &1935777218228989881
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7924658171773010244}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4116478, y: 1.1178579, z: 0.29992777}
+  m_Center: {x: 1.963171, y: -0.33314246, z: 0.055465356}
