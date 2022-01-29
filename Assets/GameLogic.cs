@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Threading.Tasks;
+using Spawner;
 using UnityEngine;
+using UnityTemplateProjects;
 using Random = UnityEngine.Random;
 
 public class GameLogic : MonoBehaviour
@@ -11,6 +14,14 @@ public class GameLogic : MonoBehaviour
     public GameObject player;
     public static GameLogic instance = null;
     public float chanceToSpawnExplosion = 0.05f;
+    public RandomObjectSpawner randomObjectSpawner;
+
+    private void SpawnStuff()
+    {
+        randomObjectSpawner.SpawnBottles();
+        randomObjectSpawner.SpawnBottles(2);
+    }
+    
     void Awake()
     {
         if (instance != null && instance != this)
@@ -23,9 +34,9 @@ public class GameLogic : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
-        
+        SpawnStuff();
     }
 
     float secondTimer = 0;
