@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tripwire : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject explodeAnime;
     void Start()
     {
         
@@ -19,7 +19,7 @@ public class Tripwire : MonoBehaviour
 	{
         if (other.gameObject == GameLogic.instance.player)
         {
-            Instantiate(GameLogic.instance.explodeAnime, transform.position, Quaternion.identity);
+            Instantiate(explodeAnime, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

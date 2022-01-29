@@ -7,6 +7,7 @@ public class FirstPerson : MonoBehaviour
 {
     public Camera camera;
     private Rigidbody rgb;
+    private float maxHeight = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class FirstPerson : MonoBehaviour
         int xmove = Convert.ToInt32(Input.GetKey(KeyCode.LeftArrow)) - Convert.ToInt32(Input.GetKey(KeyCode.RightArrow));
         int ymove = Convert.ToInt32(Input.GetKey(KeyCode.UpArrow)) - Convert.ToInt32(Input.GetKey(KeyCode.DownArrow));
         transform.position += ((-transform.right * xmove) + (transform.forward * ymove)) * Time.deltaTime * speed;
+        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -2, maxHeight), transform.position.z);
         rgb.velocity = new Vector3(0,rgb.velocity.y,0);
         Look();
     }

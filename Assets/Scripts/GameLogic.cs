@@ -5,6 +5,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 public class GameLogic : MonoBehaviour
 {
@@ -16,10 +17,14 @@ public class GameLogic : MonoBehaviour
     public GameObject endBadScreen;
     public GameObject endGoodScreen;
     public GameObject warningCross;
-
+    public Tilemap tilemap;
+    //55, -23, 87, 8
+    public Vector4 playableArea = new Vector4(-20, 50, 12, 83);
     public float chanceToSpawnExplosion = 0.05f;
     public float fadeSpeed = 0.75f;
     public bool gameOutcome = false;
+    public int paperCollected = 0;
+    public int totalPapers = 5;
     void Awake()
     {
         if (instance != null && instance != this)
@@ -43,21 +48,26 @@ public class GameLogic : MonoBehaviour
         secondTimer += Time.deltaTime;
         if (secondTimer > 1) {
             secondTimer = 1f - secondTimer;
-            spawnExplosion();
+            spawnExplosion();for (int i = 0; i < 10; i++) ;
         }
+        if (paperCollected >= totalPapers) EndGame(true);
     }
 
     void spawnExplosion() {
         if (Random.Range(0f, 1) < chanceToSpawnExplosion) {
             Vector2 rand = Random.insideUnitCircle;
-            Vector3 loc = player.transform.position + new Vector3(rand.x, 0, rand.y) * 40;
+            Vector3 loc = RandomPointInArea(2);
             Instantiate(explodeAnime, loc, Quaternion.identity);
             GameObject warning = Instantiate(warningCross, new Vector3(loc.x, 4, loc.z), Quaternion.identity);
             Destroy(warning, 10f);
         }
     }
+    Vector3 RandomPointInArea(float y) {
+        return new Vector3(Random.Range(playableArea.x, playableArea.y), y, Random.Range(playableArea.z, playableArea.w));
+    }
 
     void randomSpawn() {
+        /*
         RaycastHit hit;
         int layerMask = 0;
         layerMask = ~layerMask;
@@ -70,6 +80,11 @@ public class GameLogic : MonoBehaviour
             origin = new Vector3(rand.x, 0, rand.y) * 30;
         }
         player.transform.position = new Vector3(hit.point.x, player.transform.position.y, hit.point.z);
+        */
+        Vector3Int cellPosition = tilemap.WorldToCell(RandomPointInArea(0));
+        Vector3 loc = tilemap.GetCellCenterWorld(cellPosition);
+        Debug.Log(RandomPointInArea(0));
+        player.transform.position = new Vector3(loc.x, player.transform.position.y + 1, loc.z);
     }
 
     public void EndGame(bool outcome) {
