@@ -45,6 +45,8 @@ public class GameLogic : MonoBehaviour
     {
         //randomSpawn();
         NextGuide();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     float secondTimer = 0;
@@ -131,12 +133,14 @@ public class GameLogic : MonoBehaviour
         doAfter();
     }
     void EndGameScreen() {
-        if(gameOutcome) endGoodScreen.SetActive(true);
+        Cursor.visible = true;
+        if (gameOutcome) endGoodScreen.SetActive(true);
         else endBadScreen.SetActive(true);
         Time.timeScale = 0;
     }
 
     public void StartGame() {
+        Cursor.visible = false;
         endGoodScreen.SetActive(false);
         endBadScreen.SetActive(false);
         Time.timeScale = 1;

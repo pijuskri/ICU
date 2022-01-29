@@ -5,6 +5,7 @@ using UnityEngine;
 public class ArtyTarger : MonoBehaviour
 {
     // Start is called before the first frame update
+    float timer = 4.2f; 
     void Start()
     {
         
