@@ -15,6 +15,7 @@ public class GameLogic : MonoBehaviour
     public Image fadeBack;
     public GameObject endBadScreen;
     public GameObject endGoodScreen;
+    public GameObject warningCross;
 
     public float chanceToSpawnExplosion = 0.05f;
     public float fadeSpeed = 0.75f;
@@ -51,6 +52,8 @@ public class GameLogic : MonoBehaviour
             Vector2 rand = Random.insideUnitCircle;
             Vector3 loc = player.transform.position + new Vector3(rand.x, 0, rand.y) * 40;
             Instantiate(explodeAnime, loc, Quaternion.identity);
+            GameObject warning = Instantiate(warningCross, new Vector3(loc.x, 4, loc.z), Quaternion.identity);
+            Destroy(warning, 10f);
         }
     }
 
