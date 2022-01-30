@@ -46,6 +46,9 @@ public class Explosion : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Rubble")) {
+            Destroy(other.gameObject);
+        }
         var trip = other.gameObject.GetComponent<Tripwire>();
         if (trip != null)
         {
