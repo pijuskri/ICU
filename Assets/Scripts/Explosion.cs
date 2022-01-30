@@ -40,6 +40,7 @@ public class Explosion : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.name);
         var trip = other.gameObject.GetComponent<Tripwire>();
         if (trip != null)
         {
