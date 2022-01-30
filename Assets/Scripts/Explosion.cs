@@ -28,7 +28,7 @@ public class Explosion : MonoBehaviour
        
     }
     void shake() {
-        float strength = Mathf.Clamp(maxShakeDistance / Vector3.Distance(player.transform.position, transform.position), 0, 1.5f); ;
+        float strength = Mathf.Clamp(maxShakeDistance / Vector3.Distance(player.transform.position, transform.position), 0, 1.5f);
         StartCoroutine(firstPerson.ShakeCamera(strength));
     }
 
@@ -36,5 +36,15 @@ public class Explosion : MonoBehaviour
     void Update()
     {
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.name);
+        var trip = other.gameObject.GetComponent<Tripwire>();
+        if (trip != null)
+        {
+            trip.Explode();
+        }
     }
 }
