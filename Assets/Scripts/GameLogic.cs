@@ -45,7 +45,7 @@ public class GameLogic : MonoBehaviour
 
     void Start()
     {
-        //randomSpawn();
+        randomSpawn();
         foreach (AmmoBoxPickup box in ammoBoxes) box.guide.SetActive(false);
         NextGuide();
         Cursor.lockState = CursorLockMode.Locked;
