@@ -28,6 +28,7 @@ public class GameLogic : MonoBehaviour
     public bool gameOutcome = false;
     public int ammoCollected = 0;
     public int totalAmmo = 5;
+    static public float timeForShellLand = 4.2f;
     float shellHeight = 50;
     void Awake()
     {
@@ -66,7 +67,7 @@ public class GameLogic : MonoBehaviour
             Vector3 loc = RandomPointInArea(shellHeight);
             Instantiate(explodeAnime, loc, Quaternion.identity);
             GameObject warning = Instantiate(warningCross, new Vector3(loc.x, 6, loc.z), Quaternion.Euler(Vector3.right*90));
-            Destroy(warning, 10f);
+            Destroy(warning, timeForShellLand);
         }
     }
     Vector3 RandomPointInArea(float y) {
