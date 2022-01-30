@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6847945793287329091}
   - component: {fileID: 6741946344157093348}
   - component: {fileID: 7580359777222878685}
+  - component: {fileID: 818743601542382277}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged
@@ -124,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToDestroy: 10
   killRange: 5
+  maxShakeDistance: 40
 --- !u!82 &7580359777222878685
 AudioSource:
   m_ObjectHideFlags: 0
@@ -220,3 +222,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!135 &818743601542382277
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6847945793287329117}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 0.5, z: 0}
