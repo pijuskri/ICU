@@ -5,16 +5,19 @@ using UnityEngine;
 public class Explosion : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float timeToDestroy = 10;
+    public float timeToDestroy = 4;
     public float killRange = 5;
+    public float maxShakeDistance = 40;
     GameObject player;
+    FirstPerson firstPerson;
     void Start()
     {
         player = GameLogic.instance.player;
+        firstPerson = player.GetComponentInChildren<FirstPerson>();
         Destroy(gameObject, timeToDestroy);
-        if (Vector3.Distance(player.transform.position, transform.position) < killRange) {
-            
-        }
+
+        shake();
+
         RaycastHit hit;
         Vector3 dir = (GameLogic.instance.player.transform.position - transform.position).normalized;
         if (Physics.Raycast(transform.position, dir, out hit, killRange))
@@ -23,6 +26,10 @@ public class Explosion : MonoBehaviour
             GameLogic.instance.EndGame(false);
         }
        
+    }
+    void shake() {
+        float strength = Mathf.Clamp(maxShakeDistance / Vector3.Distance(player.transform.position, transform.position), 0, 1.5f); ;
+        StartCoroutine(firstPerson.ShakeCamera(strength));
     }
 
     // Update is called once per frame

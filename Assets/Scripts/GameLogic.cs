@@ -135,6 +135,7 @@ public class GameLogic : MonoBehaviour
     }
     void EndGameScreen() {
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
         if (gameOutcome) endGoodScreen.SetActive(true);
         else endBadScreen.SetActive(true);
         Time.timeScale = 0;
@@ -142,6 +143,7 @@ public class GameLogic : MonoBehaviour
 
     public void StartGame() {
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         endGoodScreen.SetActive(false);
         endBadScreen.SetActive(false);
         Time.timeScale = 1;

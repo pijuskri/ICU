@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class FirstPerson : MonoBehaviour
 {
@@ -36,5 +37,41 @@ public class FirstPerson : MonoBehaviour
         camera.transform.localRotation = Quaternion.Euler(rotation.x * lookSpeed, 0, 0);
     }
 
-   
+    // used fields
+    [SerializeField] private float cameraShakeDuration = 1f;
+    [SerializeField] private float cameraShakeDecreaseFactor = 1f;
+    [SerializeField] private float cameraShakeAmount = 0.3f;
+    // coroutine
+    public IEnumerator ShakeCamera(float strength)
+    {
+        var originalPos = camera.transform.localPosition;
+        var duration = cameraShakeDuration * strength;
+        var shakeReduction = 1f;
+        while (duration > 0)
+        {
+            shakeReduction = duration > 0 ? duration / cameraShakeDuration : 0;
+            camera.transform.localPosition = originalPos + Random.insideUnitSphere * cameraShakeAmount * strength * shakeReduction;
+            duration -= Time.deltaTime * cameraShakeDecreaseFactor;
+            yield return null;
+        }
+        camera.transform.localPosition = originalPos;
+
+        /*
+        if (shakeDuration > 0)
+        {
+            gameObject.transform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+            shakeDuration -= Time.deltaTime * decreaseFactor;
+            shakeAmount -= Time.deltaTime * decreaseFactor;
+            if (shakeAmount <= 0) shakeAmount = 0;
+        }
+        else
+        {
+            shakeDuration = 0f;
+            gameObject.transform.localPosition = originalPos;
+        }
+        */
+    }
+
+
+
 }
