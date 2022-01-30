@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 203463214565764369}
   - component: {fileID: -5523894591722944348}
   - component: {fileID: -2366846451900837294}
+  - component: {fileID: 8202600998824808638}
+  - component: {fileID: 7116857796258089123}
+  - component: {fileID: 5809134621237971478}
   m_Layer: 0
   m_Name: dynamite
   m_TagString: Untagged
@@ -65,7 +68,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explodeAble: 1
   fuse: 0
-  timeRemaining: 0
+  fuseTime: 6
+--- !u!136 &8202600998824808638
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691592932783650731}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.21036625
+  m_Height: 2.185316
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.2255249, z: 0.100045204}
+--- !u!136 &7116857796258089123
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691592932783650731}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.21036625
+  m_Height: 2.185316
+  m_Direction: 1
+  m_Center: {x: 0.2, y: 0.2255249, z: -0.25}
+--- !u!136 &5809134621237971478
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691592932783650731}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.21036625
+  m_Height: 2.185316
+  m_Direction: 1
+  m_Center: {x: -0.21, y: 0.2255249, z: -0.28}
 --- !u!1 &1068481512576546974
 GameObject:
   m_ObjectHideFlags: 0

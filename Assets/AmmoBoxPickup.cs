@@ -18,6 +18,7 @@ public class AmmoBoxPickup : MonoBehaviour
     }
     public void showGuide() {
         guide.SetActive(true);
+        Debug.Log("shown");
     }
     private void OnTriggerEnter(Collider other)
     {

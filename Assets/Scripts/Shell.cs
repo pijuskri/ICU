@@ -9,7 +9,7 @@ public class Shell : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Instantiate(explosion, collision.GetContact(0).point, Quaternion.identity);
-        Debug.Log(time);
+        //Debug.Log(time);
         Destroy(transform.parent.gameObject);
     }
 	private void Update()

@@ -9,9 +9,11 @@ public class FirstPerson : MonoBehaviour
     public Camera camera;
     private Rigidbody rgb;
     private float maxHeight = 3;
+    Vector3 originalPos;
     // Start is called before the first frame update
     void Start()
     {
+        originalPos = camera.transform.localPosition;
         rgb = GetComponent<Rigidbody>();
     }
     float speed = 5f;
@@ -32,7 +34,7 @@ public class FirstPerson : MonoBehaviour
     {
         rotation.y += Input.GetAxis("Mouse X");
         rotation.x += -Input.GetAxis("Mouse Y");
-        rotation.x = Mathf.Clamp(rotation.x, -15f, 15f);
+        rotation.x = Mathf.Clamp(rotation.x, -15f, 25f);
         transform.eulerAngles = new Vector2(0, rotation.y) * lookSpeed;
         camera.transform.localRotation = Quaternion.Euler(rotation.x * lookSpeed, 0, 0);
     }
@@ -44,7 +46,7 @@ public class FirstPerson : MonoBehaviour
     // coroutine
     public IEnumerator ShakeCamera(float strength)
     {
-        var originalPos = camera.transform.localPosition;
+        //var originalPos = camera.transform.localPosition;
         var duration = cameraShakeDuration * strength;
         var shakeReduction = 1f;
         while (duration > 0)
@@ -56,22 +58,6 @@ public class FirstPerson : MonoBehaviour
         }
         camera.transform.localPosition = originalPos;
 
-        /*
-        if (shakeDuration > 0)
-        {
-            gameObject.transform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
-            shakeDuration -= Time.deltaTime * decreaseFactor;
-            shakeAmount -= Time.deltaTime * decreaseFactor;
-            if (shakeAmount <= 0) shakeAmount = 0;
-        }
-        else
-        {
-            shakeDuration = 0f;
-            gameObject.transform.localPosition = originalPos;
-        }
-        */
     }
-
-
 
 }

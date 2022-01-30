@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Tripwire : MonoBehaviour
 {
-    public GameObject explodeAnime;
     void Start()
     {
         
@@ -20,7 +19,7 @@ public class Tripwire : MonoBehaviour
         var pickable = other.gameObject.GetComponent<PickableItem>();
         if (other.gameObject == GameLogic.instance.player || pickable != null)
         {
-            Instantiate(explodeAnime, transform.position, Quaternion.identity);
+            Instantiate(GameLogic.instance.explodeAnime, transform.position, Quaternion.identity);
             Destroy(gameObject);
             if (pickable != null) {
                 if (pickable.explodeAble) pickable.SetToExplode(0);

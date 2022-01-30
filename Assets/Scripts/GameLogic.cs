@@ -14,6 +14,7 @@ public class GameLogic : MonoBehaviour
     public static GameLogic instance = null;
 
     public GameObject explodeAnime;
+    public GameObject mortar;
     public GameObject player;
     public Image fadeBack;
     public GameObject endBadScreen;
@@ -65,7 +66,7 @@ public class GameLogic : MonoBehaviour
         if (Random.Range(0f, 1) < chanceToSpawnExplosion) {
             Vector2 rand = Random.insideUnitCircle;
             Vector3 loc = RandomPointInArea(shellHeight);
-            Instantiate(explodeAnime, loc, Quaternion.identity);
+            Instantiate(mortar, loc, Quaternion.identity);
             GameObject warning = Instantiate(warningCross, new Vector3(loc.x, 6, loc.z), Quaternion.Euler(Vector3.right*90));
             Destroy(warning, timeForShellLand);
         }
@@ -97,7 +98,7 @@ public class GameLogic : MonoBehaviour
 
     public void PickAmmo() {
         ammoCollected++;
-        ammoBoxes = ammoBoxes.Where(x => x != null).ToArray();
+        ammoBoxes = ammoBoxes.Skip(1).ToArray();
         NextGuide();
     }
     void NextGuide() {
