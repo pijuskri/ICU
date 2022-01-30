@@ -8,7 +8,6 @@ public class AmmoBoxPickup : MonoBehaviour
     public GameObject guide;
     void Start()
     {
-        guide.SetActive(false);
     }
 
     // Update is called once per frame
