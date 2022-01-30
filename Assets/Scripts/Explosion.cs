@@ -22,8 +22,14 @@ public class Explosion : MonoBehaviour
         Vector3 dir = (GameLogic.instance.player.transform.position - transform.position).normalized;
         if (Physics.Raycast(transform.position, dir, out hit, killRange))
         {
-           if(hit.collider.gameObject == GameLogic.instance.player) 
-            GameLogic.instance.EndGame(false);
+            if (hit.collider.gameObject == GameLogic.instance.player)
+            {
+                var rgb = GameLogic.instance.player.GetComponent<Rigidbody>();
+                GameLogic.instance.player.GetComponent<FirstPerson>().enabled = false;
+                rgb.AddExplosionForce(180000, transform.position, 6);
+                rgb.freezeRotation = false;
+                GameLogic.instance.EndGame(false);
+            }
         }
        
     }
@@ -40,7 +46,6 @@ public class Explosion : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
         var trip = other.gameObject.GetComponent<Tripwire>();
         if (trip != null)
         {

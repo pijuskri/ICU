@@ -140,7 +140,7 @@ public class GameLogic : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         if (gameOutcome) endGoodScreen.SetActive(true);
         else endBadScreen.SetActive(true);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 
     public void StartGame() {
