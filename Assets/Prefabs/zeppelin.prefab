@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5818360074644750819}
   - component: {fileID: 4996036122722296782}
   - component: {fileID: 264889779103103583}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 3760435914042196607}
   - component: {fileID: 2480665990030303243}
   - component: {fileID: 857635265185705617}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 6624349677499983040}
   - component: {fileID: 2455371640742171230}
   - component: {fileID: 6274981667196964481}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8043372297767174053}
-  m_Layer: 0
+  - component: {fileID: 6685993573491685928}
+  m_Layer: 6
   m_Name: zeppelin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +269,7 @@ Transform:
   m_GameObject: {fileID: 7265463785615353119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.87790823, y: 14.2, z: -1.7058005}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 6624349677499983040}
   - {fileID: 5818360074644750819}
@@ -276,3 +277,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6685993573491685928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7265463785615353119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56e73537613c384fa4718389893f15b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

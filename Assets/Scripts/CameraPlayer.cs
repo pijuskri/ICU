@@ -16,7 +16,7 @@ public class CameraPlayer : MonoBehaviour
     }
 
     float speed = 2f;
-    float zoomSpeed = 0.0015f;
+    float zoomSpeed = 0.004f;
     void Update()
     {
         int xmove = Convert.ToInt32(Input.GetKey(KeyCode.A)) - Convert.ToInt32(Input.GetKey(KeyCode.D));
