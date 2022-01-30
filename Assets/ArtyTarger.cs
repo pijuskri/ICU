@@ -17,7 +17,6 @@ public class ArtyTarger : MonoBehaviour
     {
         timer -= Time.deltaTime;
         Vector3 newScale = scale * Mathf.Clamp(timer / GameLogic.timeForShellLand, 0.1f, 1);
-        Debug.Log(newScale);
         transform.localScale = newScale;
     }
 }

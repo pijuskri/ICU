@@ -106,7 +106,6 @@ public class SimpleGrabSystem : MonoBehaviour {
         // Add force to throw item a little bit
         item.Rb.AddForce(item.transform.forward * 10, ForceMode.VelocityChange);
 
-        item.fuse = true;
-        item.timeRemaining = 5;
+        if(item.explodeAble) item.SetToExplode();
     }
 }
