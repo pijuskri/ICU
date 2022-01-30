@@ -17,10 +17,15 @@ public class Tripwire : MonoBehaviour
     }
 	private void OnTriggerEnter(Collider other)
 	{
-        if (other.gameObject == GameLogic.instance.player)
+        var pickable = other.gameObject.GetComponent<PickableItem>();
+        if (other.gameObject == GameLogic.instance.player || pickable != null)
         {
             Instantiate(explodeAnime, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            if (pickable != null) {
+                if (pickable.explodeAble) pickable.SetToExplode(0);
+                else Destroy(pickable.gameObject);
+            }
         }
     }
 }

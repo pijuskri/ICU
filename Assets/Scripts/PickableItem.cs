@@ -8,8 +8,10 @@ public class PickableItem : MonoBehaviour
     private Rigidbody _rb;
     public Rigidbody Rb => _rb;
 
+    public bool explodeAble = false;
     public bool fuse = false;
-    public float timeRemaining;
+    public float fuseTime = 6;
+    float timeRemaining;
     
     /// <summary>
     /// Method called on initialization.
@@ -30,5 +32,15 @@ public class PickableItem : MonoBehaviour
                 Instantiate(GameLogic.instance.explodeAnime, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
+    }
+    public void SetToExplode(float time)
+    {
+        fuse = true;
+        timeRemaining = time;
+    }
+    public void SetToExplode()
+    {
+        fuse = true;
+        timeRemaining = fuseTime;
     }
 }
